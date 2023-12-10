@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@Html.Action("FeaturedNews", "News")
+@Html.Action("NewsList", "News")
+@Html.Action("OtherFeaturedNews", "News")
+@Html.Action("MailSubs", "News")
+@Html.Action("Footer", "About")

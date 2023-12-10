@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "NewsDetails";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@Html.Action("NewsCover", "News")
+
+<section class="site-section py-lg">
+    <div class="container">
+
+        <div class="row blog-entries element-animate">
+
+            <div class="col-md-12 col-lg-8 main-content">
+                @Html.Action("NewsAllContent", "News")
+
+                @Html.Action("CommentList", "Comment")
+
+            </div>
+            <div class="col-md-12 col-lg-4 sidebar">
+                @Html.Action("AuthorAbout", "Author")
+                @Html.Action("AuthorPopularNews", "Author")
+                @Html.Action("NewsDetailsCategoryList", "Category")
+
+            </div>
+        </div>
+    </div>
+</section>
+@Html.Action("OtherFeaturedNews", "News")
+@Html.Action("MailSubs", "News")
+@Html.Action("Footer", "About")
