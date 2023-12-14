@@ -79,13 +79,15 @@ namespace MvcProje.Controllers
         {
             return View();
         }
-        public PartialViewResult NewsCover()
+        public PartialViewResult NewsCover(int id)
         {
-            return PartialView();
+            var NewsDetailsList = nm.GetNewsByID(id);
+            return PartialView(NewsDetailsList);
         }
-        public PartialViewResult NewsAllContent()
+        public PartialViewResult NewsAllContent(int id)
         {
-            return PartialView();
+            var NewsDetailsList = nm.GetNewsByID(id);
+            return PartialView(NewsDetailsList);
         }
         public ActionResult NewsByCategory()
         {

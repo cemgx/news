@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    class AboutManager
+    public class AboutManager
     {
         Repository<About> reponews = new Repository<About>();
 
