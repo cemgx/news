@@ -75,10 +75,6 @@ namespace MvcProje.Controllers
         {
             return PartialView();
         }
-        public PartialViewResult MailSubs()
-        {
-            return PartialView();
-        }
         public ActionResult NewsDetails()
         {
             return View();
