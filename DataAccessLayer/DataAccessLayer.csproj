@@ -65,12 +65,19 @@
     <Compile Include="Migrations\202312081510299_simpleFix.designer.cs">
       <DependentUpon>202312081510299_simpleFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202312101825157_mig1.cs" />
+    <Compile Include="Migrations\202312101825157_mig1.designer.cs">
+      <DependentUpon>202312101825157_mig1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202312081510299_simpleFix.resx">
       <DependentUpon>202312081510299_simpleFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312101825157_mig1.resx">
+      <DependentUpon>202312101825157_mig1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,5 @@
 ﻿using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
@@ -23,5 +18,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
+
+        public DbSet<SubscribeMail> SubscribeMails { get; set; }
     }
 }
