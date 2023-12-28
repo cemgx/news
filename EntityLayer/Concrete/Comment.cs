@@ -18,8 +18,10 @@ namespace EntityLayer.Concrete
         [StringLength(50)]
         public string Mail { get; set; }
 
-        [StringLength(300)]
+        [StringLength(1000)]
         public string CommentText { get; set; }
+
+        public DateTime CommentDate { get; set; }
 
         public int NewsID { get; set; }
         public virtual News News { get; set; } 

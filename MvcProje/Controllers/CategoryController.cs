@@ -19,7 +19,8 @@ namespace MvcProje.Controllers
         }
         public PartialViewResult NewsDetailsCategoryList() 
         {
-            return PartialView();
+            var categoryvalues = cm.GetAll();
+            return PartialView(categoryvalues);
         }
     }
 }
