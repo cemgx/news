@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class AboutManager
+    public class AuthorManager
     {
-        Repository<About> repoAbout = new Repository<About>();
+        Repository<Author> repoAuthor = new Repository<Author>();
 
-        public List<About> GetAll()
+        public List<Author> GetAll()
         {
-            return repoAbout.List();
+            return repoAuthor.List();
         }
     }
 }

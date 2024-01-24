@@ -21,6 +21,12 @@ namespace EntityLayer.Concrete
         [StringLength(300)]
         public string AuthorAbout { get; set; }
 
+        [StringLength(100)]
+        public string AuthorInstagram { get; set; }
+
+        [StringLength(100)]
+        public string AuthorX { get; set; }
+
         public ICollection<News> News { get; set; }
     }
 }

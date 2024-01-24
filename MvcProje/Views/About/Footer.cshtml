@@ -7,23 +7,22 @@
             @foreach (var x in Model)
             {
                 <div class="col-md-4">
-                    <h3 class="footer-heading mb-4">About Us</h3>
-                    <p>@x.AboutContent1</p>
+                    <p>Türkiye'den ve Dünya’dan son dakika haberleri, köşe yazıları, spordan magazine, seyahatten siyasete bütün konuların tek adresi haberinyo.com haber içerikleri izin alınmadan, kaynak gösterilerek dahi iktibas edilemez. Kanuna aykırı ve izinsiz olarak kopyalanamaz, başka yerde yayınlanamaz.</p>
                 </div>
             }
             <div class="col-md-3 ml-auto">
                 <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->
                 <ul class="list-unstyled float-left mr-5">
-                    <li><a href="#">Hakkımızda</a></li>
-                    <li><a href="#">İletişim</a></li>
-                    <li><a href="#">Ana Sayfa</a></li>
-                    <li><a href="#">Yazar Girişi</a></li>
+                    <li><a href="/About/Index/">Hakkımızda</a></li>
+                    <li><a href="/Contact/Index/">İletişim</a></li>
+                    <li><a href="/News/Index/">Ana Sayfa</a></li>
+                    <li><a href="/Author/Login/">Yazar Girişi</a></li>
                 </ul>
                 <ul class="list-unstyled float-left">
-                    <li><a href="#">Spor</a></li>
-                    <li><a href="#">Kültür & Sanat</a></li>
-                    <li><a href="#">Magazin</a></li>
-                    <li><a href="#">Film & Dizi</a></li>
+                    <li><a href="/News/NewsByCategory/4">Spor</a></li>
+                    <li><a href="/News/NewsByCategory/6">Kültür & Sanat</a></li>
+                    <li><a href="/News/NewsByCategory/5">Magazin</a></li>
+                    <li><a href="/News/NewsByCategory/3">Film & Dizi</a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -44,8 +43,8 @@
         <div class="row">
             <div class="col-12 text-center">
                 <p>
-                    Copyright &copy;
-                    <script>document.write(new Date().getFullYear());</script> Tüm hakları saklıdır.
+                    &copy; Copyright
+                    <script>document.write(new Date().getFullYear());</script> Haberinyo Gazetecilik A.Ş. Tüm hakları saklıdır.
                 </p>
             </div>
         </div>

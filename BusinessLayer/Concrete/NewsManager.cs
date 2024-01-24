@@ -26,5 +26,10 @@ namespace BusinessLayer.Concrete
         {
             return reponews.List(x => x.AuthorID == id);
         }
+
+        public List<News> GetNewsByCategory(int id)
+        {
+            return reponews.List(x => x.CategoryID == id);
+        }
     }
 }
