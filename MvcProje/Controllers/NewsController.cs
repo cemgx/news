@@ -1,9 +1,9 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
+using EntityLayer.Concrete;
 using PagedList;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcProje.Controllers
@@ -97,6 +97,39 @@ namespace MvcProje.Controllers
             var CategoryDescription = _newsManager.GetNewsByCategory(id).Select(x => x.Category.CategoryDescription).FirstOrDefault();
             ViewBag.CategoryDescription = CategoryDescription;
             return View(NewsListByCategory);
+        }
+        public ActionResult AdminNewsList()
+        {
+            var newslist = _newsManager.GetAll();
+            return View(newslist);
+        }
+
+        [HttpGet]
+        public ActionResult AddNewNews()
+        {
+            Context _context = new Context();
+            List<SelectListItem> values = (from x in _context.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryID.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+
+            List<SelectListItem> values2 = (from x in _context.Authors.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.AuthorName,
+                                               Value = x.AuthorID.ToString()
+                                           }).ToList();
+            ViewBag.values2 = values2;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AddNewNews(News news)
+        {
+            _newsManager.NewsAddBusinessLayer(news);
+            return RedirectToAction("AdminNewsList");
         }
     }
 }

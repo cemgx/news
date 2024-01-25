@@ -54,7 +54,7 @@
     <Compile Include="Concrete\About.cs" />
     <Compile Include="Concrete\Admin.cs" />
     <Compile Include="Concrete\Author.cs" />
-    <Compile Include="Concrete\Blog.cs" />
+    <Compile Include="Concrete\News.cs" />
     <Compile Include="Concrete\Category.cs" />
     <Compile Include="Concrete\Comment.cs" />
     <Compile Include="Concrete\Contact.cs" />

@@ -31,5 +31,18 @@ namespace BusinessLayer.Concrete
         {
             return reponews.List(x => x.CategoryID == id);
         }
+        public int NewsAddBusinessLayer(News businessLayer)
+        {
+            if(businessLayer.NewsTitle == "" || businessLayer.NewsImage == "" || businessLayer.NewsTitle.Length <= 5 || businessLayer.NewsContent.Length <= 200)
+            {
+                return -1;
+            }
+            return reponews.Insert(businessLayer);
+        }
+        public int DeleteNewsBusinessLayer(int p)
+        {
+            News news = reponews.Find(x => x.NewsID == p);
+            return reponews.Delete(news);
+        }
     }
 }
