@@ -24,8 +24,8 @@
             <td>@item.NewsTitle</td>
             <td>@item.Category.CategoryName</td>
             <td>@item.NewsDate.ToShortDateString()</td>
-            <td><a href="" class="btn btn-danger">Sil</a></td>
-            <td><a href="" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/News/DeleteNews/@item.NewsID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/News/UpdateNews/@item.NewsID" class="btn btn-success">Güncelle</a></td>
             <td><a href="" class="btn btn-warning">Detaylar</a></td>
             <td><a href="" class="btn btn-dark">Yorumlar</a></td>
         </tr>

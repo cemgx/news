@@ -98,6 +98,7 @@ namespace MvcProje.Controllers
             ViewBag.CategoryDescription = CategoryDescription;
             return View(NewsListByCategory);
         }
+
         public ActionResult AdminNewsList()
         {
             var newslist = _newsManager.GetAll();
@@ -130,6 +131,32 @@ namespace MvcProje.Controllers
         {
             _newsManager.NewsAddBusinessLayer(news);
             return RedirectToAction("AdminNewsList");
+        }
+        public ActionResult DeleteNews(int id)
+        {
+            _newsManager.DeleteNewsBusinessLayer(id);
+            return RedirectToAction("AdminNewsList");
+        }
+        public ActionResult UpdateNews(int id) 
+        {
+            News news = _newsManager.FindNews(id);
+            Context _context = new Context();
+            List<SelectListItem> values = (from x in _context.Categories.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryID.ToString()
+                                           }).ToList();
+            ViewBag.values = values;
+
+            List<SelectListItem> values2 = (from x in _context.Authors.ToList()
+                                            select new SelectListItem
+                                            {
+                                                Text = x.AuthorName,
+                                                Value = x.AuthorID.ToString()
+                                            }).ToList();
+            ViewBag.values2 = values2;
+            return View(news);
         }
     }
 }

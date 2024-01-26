@@ -44,5 +44,9 @@ namespace BusinessLayer.Concrete
             News news = reponews.Find(x => x.NewsID == p);
             return reponews.Delete(news);
         }
+        public News FindNews(int id)
+        {
+            return reponews.Find(x => x.NewsID == id);
+        }
     }
 }

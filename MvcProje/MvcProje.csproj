@@ -2517,6 +2517,7 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\News\AdminNewsList.cshtml" />
     <Content Include="Views\News\AddNewNews.cshtml" />
+    <Content Include="Views\News\UpdateNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
