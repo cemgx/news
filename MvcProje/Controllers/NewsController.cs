@@ -17,11 +17,13 @@ namespace MvcProje.Controllers
         {
             return View();
         }
+
         public PartialViewResult NewsList(int page = 1)
         {
             var newslist = _newsManager.GetAll().ToPagedList(page, 3);
             return PartialView(newslist);
         }
+
         public PartialViewResult FeaturedNews()
         {
             //1. Haber
@@ -71,24 +73,29 @@ namespace MvcProje.Controllers
 
             return PartialView();
         }
+        
         public PartialViewResult OtherFeaturedNews()
         {
             return PartialView();
         }
+
         public ActionResult NewsDetails()
         {
             return View();
         }
+
         public PartialViewResult NewsCover(int id)
         {
             var NewsDetailsList = _newsManager.GetNewsByID(id);
             return PartialView(NewsDetailsList);
         }
+
         public PartialViewResult NewsAllContent(int id)
         {
             var NewsDetailsList = _newsManager.GetNewsByID(id);
             return PartialView(NewsDetailsList);
         }
+
         public ActionResult NewsByCategory(int id)
         {
             var NewsListByCategory = _newsManager.GetNewsByCategory(id);
@@ -126,17 +133,20 @@ namespace MvcProje.Controllers
             ViewBag.values2 = values2;
             return View();
         }
+
         [HttpPost]
         public ActionResult AddNewNews(News news)
         {
             _newsManager.NewsAddBusinessLayer(news);
             return RedirectToAction("AdminNewsList");
         }
+
         public ActionResult DeleteNews(int id)
         {
             _newsManager.DeleteNewsBusinessLayer(id);
             return RedirectToAction("AdminNewsList");
         }
+        [HttpGet]
         public ActionResult UpdateNews(int id) 
         {
             News news = _newsManager.FindNews(id);
@@ -157,6 +167,12 @@ namespace MvcProje.Controllers
                                             }).ToList();
             ViewBag.values2 = values2;
             return View(news);
+        }
+        [HttpPost]
+        public ActionResult UpdateNews(News news)
+        {
+            _newsManager.UpdateNews(news);
+            return RedirectToActionPermanent("AdminNewsList");
         }
     }
 }

@@ -31,22 +31,37 @@ namespace BusinessLayer.Concrete
         {
             return reponews.List(x => x.CategoryID == id);
         }
-        public int NewsAddBusinessLayer(News businessLayer)
+
+        public int NewsAddBusinessLayer(News news)
         {
-            if(businessLayer.NewsTitle == "" || businessLayer.NewsImage == "" || businessLayer.NewsTitle.Length <= 5 || businessLayer.NewsContent.Length <= 200)
+            if(news.NewsTitle == "" || news.NewsImage == "" || news.NewsTitle.Length <= 5 || news.NewsContent.Length <= 200)
             {
                 return -1;
             }
-            return reponews.Insert(businessLayer);
+            return reponews.Insert(news);
         }
+
         public int DeleteNewsBusinessLayer(int p)
         {
             News news = reponews.Find(x => x.NewsID == p);
             return reponews.Delete(news);
         }
+
         public News FindNews(int id)
         {
             return reponews.Find(x => x.NewsID == id);
+        }
+
+        public int UpdateNews(News news)
+        {
+            News n = reponews.Find(x => x.NewsID == news.NewsID);
+            n.NewsTitle = news.NewsTitle;
+            n.NewsContent = news.NewsContent;
+            n.NewsDate = news.NewsDate;
+            n.NewsImage = news.NewsImage;
+            n.CategoryID = news.CategoryID;
+            n.AuthorID = news.AuthorID;
+            return reponews.Update(n);
         }
     }
 }
