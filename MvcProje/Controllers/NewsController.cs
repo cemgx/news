@@ -174,5 +174,12 @@ namespace MvcProje.Controllers
             _newsManager.UpdateNews(news);
             return RedirectToActionPermanent("AdminNewsList");
         }
+
+        public ActionResult GetCommentByNews(int id)
+        {
+            CommentManager commentManager = new CommentManager();
+            var commentList = commentManager.CommentByNews(id);
+            return View(commentList);
+        }
     }
 }

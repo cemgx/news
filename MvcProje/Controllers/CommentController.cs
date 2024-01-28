@@ -11,12 +11,14 @@ namespace MvcProje.Controllers
     public class CommentController : Controller
     {
         // GET: Comment
-        CommentManager cm = new CommentManager();
+        CommentManager _commentmanager = new CommentManager();
+
         public PartialViewResult CommentList(int id)
         {         
-            var commentList = cm.CommentByNews(id);
+            var commentList = _commentmanager.CommentByNews(id);
             return PartialView(commentList);
         }
+
         [HttpGet]
         public PartialViewResult LeaveComment(int id)
         {
@@ -24,9 +26,9 @@ namespace MvcProje.Controllers
             return PartialView();
         }
         [HttpPost]
-        public PartialViewResult LeaveComment(Comment c)
+        public PartialViewResult LeaveComment(Comment comment)
         {
-            cm.CommentAdd(c);
+            _commentmanager.CommentAdd(comment);
             return PartialView();
         }
     }
