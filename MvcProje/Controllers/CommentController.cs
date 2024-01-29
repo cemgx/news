@@ -31,13 +31,11 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult DeleteComment(int id)
         {
-            {
-                int newsId = _commentManager.GetNewsIdByCommentId(id);
 
-                _commentManager.DeleteCommentBusinessLayer(id);
-                return RedirectToAction("GetCommentByNews", "News", new { id = newsId });
+            int newsId = _commentManager.GetNewsIdByCommentId(id);
 
-            }
+            _commentManager.DeleteCommentBusinessLayer(id);
+            return RedirectToAction("GetCommentByNews", "News", new { id = newsId });
         }
     }
 }

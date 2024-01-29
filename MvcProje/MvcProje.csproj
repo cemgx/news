@@ -2523,6 +2523,8 @@
     <Content Include="Views\News\UpdateNews.cshtml" />
     <Content Include="Views\News\GetCommentByNews.cshtml" />
     <Content Include="Views\Author\AuthorList.cshtml" />
+    <Content Include="Views\Author\AddAuthor.cshtml" />
+    <Content Include="Views\Author\AuthorEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
