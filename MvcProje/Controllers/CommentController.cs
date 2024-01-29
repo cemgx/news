@@ -32,10 +32,11 @@ namespace MvcProje.Controllers
             return PartialView();
         }
 
+        [HttpPost]
         public ActionResult DeleteComment(int id)
         {
             _commentManager.DeleteCommentBusinessLayer(id);
-            return RedirectToAction("AdminNewsList");
+            return RedirectToAction("AdminNewsList", "News");
         }
     }
 }

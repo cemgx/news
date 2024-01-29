@@ -25,7 +25,11 @@
                                         <h3 class="timeline-header"><a>@item.UserName</a> @item.Mail</h3>
                                         <div class="timeline-body">@item.CommentText</div>
                                         <div class="timeline-footer">
-                                            <a href="/Comment/GetCommentByNews/DeleteComment/@item.CommentID" class="btn btn-danger">Sil</a>
+                                            @using (Html.BeginForm("DeleteComment", "Comment", FormMethod.Post))
+                                            {
+                                                <input type="hidden" name="id" value="@item.CommentID" />
+                                                <button type="submit" class="btn btn-danger">Sil</button>
+                                            }
                                         </div>
                                     </div>
                                 </div>
