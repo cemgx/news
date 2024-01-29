@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<EntityLayer.Concrete.Comment>
 
 @{
-    ViewBag.Title = "GetCommentByBlog";
+    ViewBag.Title = "GetCommentByNews";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -25,7 +25,7 @@
                                         <h3 class="timeline-header"><a>@item.UserName</a> @item.Mail</h3>
                                         <div class="timeline-body">@item.CommentText</div>
                                         <div class="timeline-footer">
-                                            <a href="/News/GetCommentByNews/DeleteComment/@item.CommentID" class="btn btn-danger">Sil</a>
+                                            <a href="/Comment/GetCommentByNews/DeleteComment/@item.CommentID" class="btn btn-danger">Sil</a>
                                         </div>
                                     </div>
                                 </div>

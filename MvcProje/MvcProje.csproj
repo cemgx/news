@@ -2085,15 +2085,18 @@
     <Content Include="pics\bayern.jpg" />
     <Content Include="pics\chatgpt.jpg" />
     <Content Include="pics\contact.jpg" />
+    <Content Include="pics\dondu.jpeg" />
     <Content Include="pics\furk.jpg" />
     <Content Include="pics\furkan.jpeg" />
     <Content Include="pics\head.jpg" />
+    <Content Include="pics\hiko.jpeg" />
     <Content Include="pics\kubra_thumbnail.jpg" />
     <Content Include="pics\me.JPG" />
     <Content Include="pics\mervebolugur.jpg" />
     <Content Include="pics\mid1.jpg" />
     <Content Include="pics\mid2.png" />
     <Content Include="pics\news logo.png" />
+    <Content Include="pics\rana.jpeg" />
     <Content Include="pics\sirt_agrisi.jpg" />
     <Content Include="pics\tech.jpg" />
     <Content Include="pics\teohbr.jpg" />
@@ -2519,6 +2522,7 @@
     <Content Include="Views\News\AddNewNews.cshtml" />
     <Content Include="Views\News\UpdateNews.cshtml" />
     <Content Include="Views\News\GetCommentByNews.cshtml" />
+    <Content Include="Views\Author\AuthorList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
