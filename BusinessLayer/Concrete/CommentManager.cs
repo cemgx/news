@@ -29,5 +29,11 @@ namespace BusinessLayer.Concrete
             }
             return repocomment.Insert(c);
         }
+
+        public int DeleteCommentBusinessLayer(int p)
+        {
+            Comment comment = repocomment.Find(x => x.CommentID == p);
+            return repocomment.Delete(comment);
+        }
     }
 }

@@ -146,6 +146,7 @@ namespace MvcProje.Controllers
             _newsManager.DeleteNewsBusinessLayer(id);
             return RedirectToAction("AdminNewsList");
         }
+
         [HttpGet]
         public ActionResult UpdateNews(int id) 
         {

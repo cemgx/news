@@ -11,11 +11,11 @@ namespace MvcProje.Controllers
     public class CommentController : Controller
     {
         // GET: Comment
-        CommentManager _commentmanager = new CommentManager();
+        CommentManager _commentManager = new CommentManager();
 
         public PartialViewResult CommentList(int id)
         {         
-            var commentList = _commentmanager.CommentByNews(id);
+            var commentList = _commentManager.CommentByNews(id);
             return PartialView(commentList);
         }
 
@@ -28,8 +28,14 @@ namespace MvcProje.Controllers
         [HttpPost]
         public PartialViewResult LeaveComment(Comment comment)
         {
-            _commentmanager.CommentAdd(comment);
+            _commentManager.CommentAdd(comment);
             return PartialView();
+        }
+
+        public ActionResult DeleteComment(int id)
+        {
+            _commentManager.DeleteCommentBusinessLayer(id);
+            return RedirectToAction("AdminNewsList");
         }
     }
 }
