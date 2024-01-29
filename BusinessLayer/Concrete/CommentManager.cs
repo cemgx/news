@@ -1,10 +1,6 @@
 ﻿using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
@@ -21,13 +17,26 @@ namespace BusinessLayer.Concrete
             return repocomment.List(x => x.NewsID == id);
         }
 
-        public int CommentAdd(Comment c) 
+        public int CommentAdd(Comment c)
         {
-            if(c.CommentText.Length <= 4 || c.CommentText.Length >= 1001 || c.UserName =="" || c.Mail == "" || c.UserName.Length <= 3)
+            if (c.CommentText.Length <= 4 || c.CommentText.Length >= 1001 || c.UserName == "" || c.Mail == "" || c.UserName.Length <= 3)
             {
                 return -1;
             }
             return repocomment.Insert(c);
+        }
+
+        public int GetNewsIdByCommentId(int commentId)
+        {
+            var comment = repocomment.Find(c => c.CommentID == commentId);
+            if (comment != null)
+            {
+                return comment.NewsID;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         public int DeleteCommentBusinessLayer(int p)

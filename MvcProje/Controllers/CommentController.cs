@@ -1,9 +1,5 @@
 ﻿using BusinessLayer.Concrete;
 using EntityLayer.Concrete;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcProje.Controllers
@@ -14,7 +10,7 @@ namespace MvcProje.Controllers
         CommentManager _commentManager = new CommentManager();
 
         public PartialViewResult CommentList(int id)
-        {         
+        {
             var commentList = _commentManager.CommentByNews(id);
             return PartialView(commentList);
         }
@@ -35,8 +31,13 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult DeleteComment(int id)
         {
-            _commentManager.DeleteCommentBusinessLayer(id);
-            return RedirectToAction("AdminNewsList", "News");
+            {
+                int newsId = _commentManager.GetNewsIdByCommentId(id);
+
+                _commentManager.DeleteCommentBusinessLayer(id);
+                return RedirectToAction("GetCommentByNews", "News", new { id = newsId });
+
+            }
         }
     }
 }
