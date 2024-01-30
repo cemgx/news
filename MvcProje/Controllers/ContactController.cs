@@ -12,6 +12,7 @@ namespace MvcProje.Controllers
     {
         // GET: Contact
         ContactManager _contactManager = new ContactManager();
+        
         public ActionResult Index()
         {
             return View();
@@ -28,6 +29,18 @@ namespace MvcProje.Controllers
         {
             _contactManager.BLContactAdd(p);
             return View();
+        }
+
+        public ActionResult SendBox()
+        {
+            var messageList = _contactManager.GetAll();
+            return View(messageList);
+        }
+
+        public ActionResult MessageDetails(int id)
+        {
+            Contact contact = _contactManager.GetContactDetails(id);
+            return View(contact);
         }
     }
 }
