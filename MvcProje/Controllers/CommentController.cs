@@ -44,10 +44,22 @@ namespace MvcProje.Controllers
             return View(commentList);
         }
 
-        public ActionResult ChangeCommentStatusToFalseAction(int id) 
+        public ActionResult AdminCommentListFalse()
+        {
+            var commentList = _commentManager.CommentByStatusFalse();
+            return View(commentList);
+        }
+
+        public ActionResult ChangeCommentStatusToFalse(int id) 
         {
             _commentManager.ChangeCommentStatusToFalse(id);
             return RedirectToAction("AdminCommentListTrue");
+        }
+
+        public ActionResult ChangeCommentStatusToTrue(int id)
+        {
+            _commentManager.ChangeCommentStatusToTrue(id);
+            return RedirectToAction("AdminCommentListFalse");
         }
     }
 }

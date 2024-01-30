@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<EntityLayer.Concrete.Comment>
 
 @{
-    ViewBag.Title = "AdminCommentListTrue";
+    ViewBag.Title = "AdminCommentListFalse";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -25,8 +25,8 @@
                             <p>@item.CommentText</p>
                             <p>
                                 <span class="float-right">
-                                    <a href="/Comment/ChangeCommentStatusToFalse/@item.CommentID" class="link-black text-sm">
-                                        <i class="fas fa-eraser"></i> Yorumu Sil
+                                    <a href="/Comment/ChangeCommentStatusToTrue/@item.CommentID" class="link-black text-sm">
+                                        <i class="fas fa-eraser"></i> Yorumu Onayla
                                     </a>
                                 </span>
                                 <br />
