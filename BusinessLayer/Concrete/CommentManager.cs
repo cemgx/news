@@ -8,13 +8,19 @@ namespace BusinessLayer.Concrete
     {
         Repository<Comment> repocomment = new Repository<Comment>();
 
-        public List<Comment> CommentList(int id)
+        public List<Comment> CommentList()
         {
             return repocomment.List();
         }
+
         public List<Comment> CommentByNews(int id)
         {
             return repocomment.List(x => x.NewsID == id);
+        }
+
+        public List<Comment> CommentByStatusTrue() 
+        {
+            return repocomment.List(x => x.CommentStatus == true);
         }
 
         public int CommentAdd(Comment c)
@@ -24,6 +30,13 @@ namespace BusinessLayer.Concrete
                 return -1;
             }
             return repocomment.Insert(c);
+        }
+
+        public int ChangeCommentStatusToFalse(int id)
+        {
+            Comment _comment = repocomment.Find(x => x.CommentID == id);
+            _comment.CommentStatus = false;
+            return repocomment.Update(_comment);
         }
 
         public int GetNewsIdByCommentId(int commentId)

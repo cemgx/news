@@ -23,6 +23,8 @@ namespace EntityLayer.Concrete
 
         public DateTime CommentDate { get; set; }
 
+        public bool CommentStatus { get; set; }
+
         public int NewsID { get; set; }
         public virtual News News { get; set; } 
     }
