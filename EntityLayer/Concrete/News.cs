@@ -22,6 +22,8 @@ namespace EntityLayer.Concrete
 
         public string NewsContent { get; set; }
 
+        public int NewsRating { get; set; }
+
         public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
 

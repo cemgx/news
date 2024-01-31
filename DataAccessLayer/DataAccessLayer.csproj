@@ -93,6 +93,10 @@
     <Compile Include="Migrations\202401301457329_mig7.designer.cs">
       <DependentUpon>202401301457329_mig7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202401310701067_mig_newsRating.cs" />
+    <Compile Include="Migrations\202401310701067_mig_newsRating.designer.cs">
+      <DependentUpon>202401310701067_mig_newsRating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -120,6 +124,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202401301457329_mig7.resx">
       <DependentUpon>202401301457329_mig7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202401310701067_mig_newsRating.resx">
+      <DependentUpon>202401310701067_mig_newsRating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
