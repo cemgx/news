@@ -163,6 +163,7 @@
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MailSubscribeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
@@ -2095,6 +2096,8 @@
     <Content Include="miniblog\js\popper.min.js" />
     <Content Include="miniblog\js\slick.min.js" />
     <Content Include="miniblog\single.html" />
+    <Content Include="pics\404-16.9.png" />
+    <Content Include="pics\404.png" />
     <Content Include="pics\a.jpg" />
     <Content Include="pics\bayern.jpg" />
     <Content Include="pics\chatgpt.jpg" />
@@ -2562,6 +2565,7 @@
     <Content Include="Views\User\NewsList.cshtml" />
     <Content Include="Views\User\UpdateNews.cshtml" />
     <Content Include="Views\User\AddNewNews.cshtml" />
+    <Content Include="Views\Error\Page404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
