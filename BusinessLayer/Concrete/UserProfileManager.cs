@@ -22,5 +22,21 @@ namespace BusinessLayer.Concrete
         {
             return repoUserNews.List(x => x.AuthorID == id);
         }
+
+        public int EditAuthor(Author author)
+        {
+            Author _author = repoUser.Find(x => x.AuthorID == author.AuthorID);
+            _author.AuthorName = author.AuthorName;
+            _author.AuthorImage = author.AuthorImage;
+            _author.AuthorAbout = author.AuthorAbout;
+            _author.AuthorInstagram = author.AuthorInstagram;
+            _author.AuthorX = author.AuthorX;
+            _author.AuthorTitle = author.AuthorTitle;
+            _author.AuthorShortAbout = author.AuthorShortAbout;
+            _author.AuthorMail = author.AuthorMail;
+            _author.AuthorPassword = author.AuthorPassword;
+            _author.AuthorPhoneNumber = author.AuthorPhoneNumber;
+            return repoUser.Update(_author);
+        }
     }
 }

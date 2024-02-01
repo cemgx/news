@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_AuthorLayout.cshtml";
 }
 
+@{string color = "";}
+@{string caseName = "";}
+
 <!DOCTYPE html>
 <html>
 <body class="hold-transition sidebar-mini">
@@ -30,7 +33,7 @@
                             <th style="width: 30%">
                                 Haber Başlığı
                             </th>
-                            <th>
+                            <th style="width: 20%">
                                 Beğeni Oranı
                             </th>
                             <th style="width: 5%" class="text-center">
@@ -43,23 +46,45 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
+
+                            if (item.NewsRating >= 85)
+                            {
+                                color = "post-category text-white bg-success mb-3";
+                                caseName = "Başarılı";
+                            }
+                            if (item.NewsRating <= 84 && item.NewsRating >= 70)
+                            {
+                                color = "post-category text-white bg-info mb-3";
+                                caseName = "Orta";
+                            }
+                            if (item.NewsRating <= 69 && item.NewsRating >= 50)
+                            {
+                                color = "post-category text-white bg-warning mb-3";
+                                caseName = "Eh işte";
+                            }
+                            if (item.NewsRating <= 49 && item.NewsRating >= 0)
+                            {
+                                color = "post-category text-white bg-danger mb-3";
+                                caseName = "Berbat";
+                            }
+
                             <tr>
                                 <td>@item.NewsID</td>
                                 <td><b><i>@item.NewsTitle</i></b></td>
                                 <td class="project_progress">
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="@item.NewsRating" aria-volumemin="0" aria-volumemax="10" style="width: @item.NewsRating">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="10" aria-volumemin="0" aria-volumemax="10" style="width: @item.NewsRating%">
                                         </div>
                                     </div>
                                     <small>
-                                        57% Complete
+                                        @item.NewsRating / 100
                                     </small>
                                 </td>
                                 <td class="project-state">
-                                    <span class="badge badge-success">Success</span>
+                                    <span class="badge @color">@caseName</span>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="/User/UpdateNews/@item.NewsID">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Düzenle
@@ -77,5 +102,6 @@
             </div>
         </div>
     </section>
+    <a href="/User/AddNewNews/" class="btn btn-primary">Yeni Haber Ekle</a>
 </body>
 </html>

@@ -2560,6 +2560,8 @@
     <Content Include="Views\Login\AuthorLogin.cshtml" />
     <Content Include="Views\User\Partial1.cshtml" />
     <Content Include="Views\User\NewsList.cshtml" />
+    <Content Include="Views\User\UpdateNews.cshtml" />
+    <Content Include="Views\User\AddNewNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

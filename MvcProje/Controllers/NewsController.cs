@@ -139,7 +139,6 @@ namespace MvcProje.Controllers
             ViewBag.values2 = values2;
             return View();
         }
-
         [HttpPost]
         public ActionResult AddNewNews(News news)
         {
@@ -179,7 +178,7 @@ namespace MvcProje.Controllers
         public ActionResult UpdateNews(News news)
         {
             _newsManager.UpdateNews(news);
-            return RedirectToActionPermanent("AdminNewsList");
+            return RedirectToAction("AdminNewsList");
         }
 
         public ActionResult GetCommentByNews(int id)
