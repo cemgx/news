@@ -9,6 +9,7 @@ using System.Web.Security;
 
 namespace MvcProje.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -17,7 +18,6 @@ namespace MvcProje.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult AuthorLogin(Author author)
         {
@@ -31,8 +31,29 @@ namespace MvcProje.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Kullanıcı adı boş olamaz.");
-                return View();
+                return RedirectToAction("AuthorLogin", "Login");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AdminLogin(Admin admin)
+        {
+            Context context = new Context();
+            var adminData = context.Admins.FirstOrDefault(x => x.UserName == admin.UserName && x.Password == admin.Password);
+            if (adminData != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminData.UserName, false);
+                Session["UserName"] = adminData.UserName.ToString();
+                return RedirectToAction("AdminNewsList", "News");
+            }
+            else
+            {
+                return RedirectToAction("AdminLogin", "Login");
             }
         }
     }

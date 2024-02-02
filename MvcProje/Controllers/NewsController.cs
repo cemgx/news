@@ -121,6 +121,7 @@ namespace MvcProje.Controllers
             return View(NewsListByCategory);
         }
 
+        [Authorize]
         public ActionResult AdminNewsList()
         {
             var newslist = _newsManager.GetAll();
