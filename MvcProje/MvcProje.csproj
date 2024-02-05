@@ -158,6 +158,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
@@ -168,7 +170,6 @@
     <Compile Include="Controllers\MailSubscribeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2612,6 +2613,25 @@
     <Content Include="adminLoginPage\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="adminLoginPage\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="adminLoginPage\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Admin\UpdateAboutList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AuthorList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddAuthor.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AuthorEdit.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminCategoryList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Chart1.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Chart2.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Chart3.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminCommentListTrue.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminCommentListFalse.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\SendBox.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\MessageDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddNewNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\UpdateNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminNewsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AdminNewsList2.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\GetCommentByNews.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Chart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2634,9 +2654,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
@@ -2672,7 +2689,7 @@
     <Content Include="Views\About\UpdateAboutList.cshtml" />
     <Content Include="Views\Contact\SendBox.cshtml" />
     <Content Include="Views\Contact\MessageDetails.cshtml" />
-    <Content Include="Views\Chart\Index.cshtml" />
+    <Content Include="Views\Chart\Chart.cshtml" />
     <Content Include="Views\Chart\Chart1.cshtml" />
     <Content Include="Views\Chart\Chart2.cshtml" />
     <Content Include="Views\Chart\Chart3.cshtml" />
@@ -2688,6 +2705,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

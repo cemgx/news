@@ -11,7 +11,7 @@ namespace MvcProje.Controllers
     public class ChartController : Controller
     {
         // GET: Chart
-        public ActionResult Index()
+        public ActionResult Chart()
         {
             return View();
         }

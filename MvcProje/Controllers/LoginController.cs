@@ -9,7 +9,6 @@ using System.Web.Security;
 
 namespace MvcProje.Controllers
 {
-    [AllowAnonymous]
     public class LoginController : Controller
     {
         // GET: Login
@@ -49,7 +48,7 @@ namespace MvcProje.Controllers
             {
                 FormsAuthentication.SetAuthCookie(adminData.UserName, false);
                 Session["UserName"] = adminData.UserName.ToString();
-                return RedirectToAction("AdminNewsList", "News");
+                return RedirectToAction("AdminNewsList", "Admin", new { area = "Admin" });
             }
             else
             {
