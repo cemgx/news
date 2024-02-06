@@ -88,7 +88,7 @@ namespace MvcProje.Controllers
 
             return PartialView();
         }
-        
+
         public PartialViewResult OtherFeaturedNews()
         {
             return PartialView();
@@ -146,11 +146,11 @@ namespace MvcProje.Controllers
             ViewBag.values = values;
 
             List<SelectListItem> values2 = (from x in _context.Authors.ToList()
-                                           select new SelectListItem
-                                           {
-                                               Text = x.AuthorName,
-                                               Value = x.AuthorID.ToString()
-                                           }).ToList();
+                                            select new SelectListItem
+                                            {
+                                                Text = x.AuthorName,
+                                                Value = x.AuthorID.ToString()
+                                            }).ToList();
             ViewBag.values2 = values2;
             return View();
         }
@@ -168,7 +168,7 @@ namespace MvcProje.Controllers
         }
 
         [HttpGet]
-        public ActionResult UpdateNews(int id) 
+        public ActionResult UpdateNews(int id)
         {
             News news = _newsManager.FindNews(id);
             Context _context = new Context();

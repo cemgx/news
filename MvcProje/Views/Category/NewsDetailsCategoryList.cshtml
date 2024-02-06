@@ -5,8 +5,11 @@
     <ul class="categories">
         @foreach (var x in Model)
         {
-            <li><a href="#">@x.CategoryName <span></span></a></li>
-        }    
+            if (x.CategoryStatus == true)
+            {
+                <li><a href="/News/NewsByCategory/@x.CategoryID">@x.CategoryName <span></span></a></li>
+            }
+        }
     </ul>
-    
+
 </div>

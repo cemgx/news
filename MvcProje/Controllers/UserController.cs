@@ -17,7 +17,7 @@ namespace MvcProje.Controllers
 
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -33,8 +33,9 @@ namespace MvcProje.Controllers
             _userProfileManager.EditAuthor(author);
             return RedirectToAction("Index");
         }
-            public ActionResult NewsList(string p)
-        { 
+
+        public ActionResult NewsList(string p)
+        {
             p = (string)Session["AuthorMail"];
             Context context = new Context();
             int id = context.Authors.Where(x => x.AuthorMail == p).Select(y => y.AuthorID).FirstOrDefault();

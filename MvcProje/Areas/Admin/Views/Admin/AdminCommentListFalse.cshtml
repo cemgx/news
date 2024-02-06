@@ -16,9 +16,9 @@
                     {
                         <div class="post">
                             <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="" alt="user image">
+                                <img class="img-circle img-bordered-sm" src="~/pics/user.png" alt="user image">
                                 <span class="username">
-                                    <a href="#">@item.UserName - @item.News.NewsTitle</a>
+                                    <a style="color: red;">@item.UserName - @item.News.NewsTitle</a>
                                 </span>
                                 <span class="description">@(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))</span>
                             </div>

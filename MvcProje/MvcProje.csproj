@@ -2148,6 +2148,7 @@
     <Content Include="pics\404-16.9.png" />
     <Content Include="pics\404.png" />
     <Content Include="pics\a.jpg" />
+    <Content Include="pics\aslan.jpg" />
     <Content Include="pics\bayern.jpg" />
     <Content Include="pics\chatgpt.jpg" />
     <Content Include="pics\contact.jpg" />
@@ -2169,6 +2170,7 @@
     <Content Include="pics\teohbr2.jpg" />
     <Content Include="pics\teoman.png" />
     <Content Include="pics\ts.jpg" />
+    <Content Include="pics\user.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2632,6 +2634,8 @@
     <Content Include="Areas\Admin\Views\Admin\AdminNewsList2.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\GetCommentByNews.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Chart.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AuthorNewsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\CategoryEdit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

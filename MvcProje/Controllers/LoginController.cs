@@ -26,6 +26,9 @@ namespace MvcProje.Controllers
             {
                 FormsAuthentication.SetAuthCookie(userData.AuthorMail, false);
                 Session["AuthorMail"] = userData.AuthorMail.ToString();
+                Session["UserName"] = userData.AuthorName.ToString();
+                Session["AuthorImage"] = userData.AuthorImage;
+
                 return RedirectToAction("Index", "User");
             }
             else

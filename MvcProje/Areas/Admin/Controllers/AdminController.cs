@@ -268,5 +268,48 @@ namespace MvcProje.Areas.Admin.Controllers
             _commentManager.DeleteCommentBusinessLayer(id);
             return RedirectToAction("GetCommentByNews", "Admin", new { id = newsId });
         }
+
+        public ActionResult AuthorNewsList(int id)
+        {
+            var news = _newsManager.GetNewsByAuthor(id);
+            return View(news);
+        }
+
+        [HttpGet]
+        public ActionResult AdminCategoryAdd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult AdminCategoryAdd(Category category)
+        {
+            _categoryManager.CategoryAddBusinessLayer(category);
+            return RedirectToAction("AdminCategoryList");
+        }
+
+        [HttpGet]
+        public ActionResult CategoryEdit(int id)
+        {
+            Category category = _categoryManager.FindCategory(id);
+            return View(category);
+        }
+        [HttpPost]
+        public ActionResult CategoryEdit(Category category)
+        {
+            _categoryManager.EditCategory(category);
+            return RedirectToAction("AdminCategoryList");
+        }
+
+        public ActionResult CategoryDelete(int id)
+        {
+            _categoryManager.CategoryStatusFalseBusinessLayer(id);
+            return RedirectToAction("AdminCategoryList");
+        }
+
+        public ActionResult CategoryStatusTrue(int id)
+        {
+            _categoryManager.CategoryStatusTrueBusinessLayer(id);
+            return RedirectToAction("AdminCategoryList");
+        }
     }
 }
