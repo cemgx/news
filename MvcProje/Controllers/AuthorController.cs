@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ namespace MvcProje.Controllers
     {
         // GET: Author
         NewsManager _newsManager = new NewsManager();
-        AuthorManager _authorManager = new AuthorManager();
+        AuthorManager _authorManager = new AuthorManager(new EfAuthorDal());
 
         public PartialViewResult AuthorAbout(int id)
         {
@@ -29,7 +31,7 @@ namespace MvcProje.Controllers
 
         public ActionResult AuthorList()
         {
-            var authorList = _authorManager.GetAll();
+            var authorList = _authorManager.GetList();
             return View(authorList);
         }
 

@@ -12,13 +12,13 @@ namespace BusinessLayer.Concrete
     {
         Repository<SubscribeMail> reposubscribemail = new Repository<SubscribeMail>();
 
-        public int BLAdd(SubscribeMail p)
+        public void BLAdd(SubscribeMail p)
         {
-            if(p.Mail.Length <= 10 || p.Mail.Length >= 50)
-            {
-                return -1;
-            }
-            return reposubscribemail.Insert(p);
+            //if(p.Mail.Length <= 10 || p.Mail.Length >= 50)
+            //{
+            //    return -1;
+            //}
+            reposubscribemail.Insert(p);
         }
     }
 }

@@ -28,27 +28,27 @@ namespace BusinessLayer.Concrete
             return repocomment.List(x => x.CommentStatus == false);
         }
 
-        public int CommentAdd(Comment c)
+        public void CommentAdd(Comment c)
         {
-            if (c.CommentText.Length <= 4 || c.CommentText.Length >= 1001 || c.UserName == "" || c.Mail == "" || c.UserName.Length <= 3)
-            {
-                return -1;
-            }
-            return repocomment.Insert(c);
+            //if (c.CommentText.Length <= 4 || c.CommentText.Length >= 1001 || c.UserName == "" || c.Mail == "" || c.UserName.Length <= 3)
+            //{
+            //    return -1;
+            //}
+            repocomment.Insert(c);
         }
 
-        public int ChangeCommentStatusToFalse(int id)
+        public void ChangeCommentStatusToFalse(int id)
         {
             Comment _comment = repocomment.Find(x => x.CommentID == id);
             _comment.CommentStatus = false;
-            return repocomment.Update(_comment);
+            repocomment.Update(_comment);
         }
 
-        public int ChangeCommentStatusToTrue(int id)
+        public void ChangeCommentStatusToTrue(int id)
         {
             Comment _comment = repocomment.Find(x => x.CommentID == id);
             _comment.CommentStatus = true;
-            return repocomment.Update(_comment);
+            repocomment.Update(_comment);
         }
 
         public int GetNewsIdByCommentId(int commentId)
@@ -64,10 +64,10 @@ namespace BusinessLayer.Concrete
             }
         }
 
-        public int DeleteCommentBusinessLayer(int p)
+        public void DeleteCommentBusinessLayer(int p)
         {
             Comment comment = repocomment.Find(x => x.CommentID == p);
-            return repocomment.Delete(comment);
+            repocomment.Delete(comment);
         }
     }
 }

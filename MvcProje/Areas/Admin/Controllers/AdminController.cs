@@ -1,11 +1,12 @@
 ﻿using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using MvcProje.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -16,8 +17,8 @@ namespace MvcProje.Areas.Admin.Controllers
     {
         // GET: Admin/Admin
         AboutManager _aboutManager = new AboutManager();
-        AuthorManager _authorManager = new AuthorManager();
-        CategoryManager _categoryManager = new CategoryManager();
+        AuthorManager _authorManager = new AuthorManager(new EfAuthorDal());
+        CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
         CommentManager _commentManager = new CommentManager();
         ContactManager _contactManager = new ContactManager();
         NewsManager _newsManager = new NewsManager();
@@ -284,21 +285,47 @@ namespace MvcProje.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AdminCategoryAdd(Category category)
         {
-            _categoryManager.CategoryAddBusinessLayer(category);
-            return RedirectToAction("AdminCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(category);
+            if (results.IsValid)
+            {
+                _categoryManager.Add(category);
+                return RedirectToAction("AdminCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
         [HttpGet]
         public ActionResult CategoryEdit(int id)
         {
-            Category category = _categoryManager.FindCategory(id);
+            Category category = _categoryManager.GetByID(id);
             return View(category);
         }
         [HttpPost]
         public ActionResult CategoryEdit(Category category)
         {
-            _categoryManager.EditCategory(category);
-            return RedirectToAction("AdminCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult results = categoryValidator.Validate(category);
+            if (results.IsValid)
+            {
+                _categoryManager.Update(category);
+                return RedirectToAction("AdminCategoryList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
         public ActionResult CategoryDelete(int id)

@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace MvcProje.Controllers
         }
         public PartialViewResult MeetTeam()
         {
-            AuthorManager _authorManager = new AuthorManager();
+            AuthorManager _authorManager = new AuthorManager(new EfAuthorDal());
             var authorList = _authorManager.GetAll();
             return PartialView(authorList);
         }
