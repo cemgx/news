@@ -43,6 +43,7 @@
                 {
                     color = "post-category text-white bg-primary mb-3";
                 }
+
                 <div class="col-lg-4 mb-4">
                     <div class="entry2">
                         <a href="/News/NewsDetails/@x.NewsID"><img src="@x.NewsImage" style="height:250px" alt="Image" class="img-fluid rounded"></a>
@@ -53,6 +54,7 @@
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="@x.Author.AuthorImage" alt="Image" class="img-fluid"></figure>
                                 <span class="d-inline-block mt-1"><a href="#">@x.Author.AuthorName</a></span>
                                 <span>&nbsp;-&nbsp; @(((DateTime)x.NewsDate).ToString("dd-MMM-yyyy"))</span>
+                                Puan: @x.NewsRating
                             </div>
                             <p>@x.NewsContent.Substring(0, x.NewsContent.Substring(0, 200).LastIndexOf(" "))...</p>
                             <p><a href="/News/NewsDetails/@x.NewsID">Devamını Oku</a></p>

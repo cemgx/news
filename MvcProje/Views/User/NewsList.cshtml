@@ -6,6 +6,7 @@
 
 @{string color = "";}
 @{string caseName = "";}
+@{int puan = 0;}
 
 <!DOCTYPE html>
 <html>
@@ -46,37 +47,38 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.NewsRating >= 85)
+                            if (item.NewsRating >= 8)
                             {
                                 color = "post-category text-white bg-success mb-3";
                                 caseName = "Başarılı";
                             }
-                            if (item.NewsRating <= 84 && item.NewsRating >= 70)
+                            if (item.NewsRating < 8 && item.NewsRating >= 5)
                             {
                                 color = "post-category text-white bg-info mb-3";
                                 caseName = "Orta";
                             }
-                            if (item.NewsRating <= 69 && item.NewsRating >= 50)
+                            if (item.NewsRating < 5 && item.NewsRating >= 3)
                             {
                                 color = "post-category text-white bg-warning mb-3";
                                 caseName = "Eh işte";
                             }
-                            if (item.NewsRating <= 49 && item.NewsRating >= 0)
+                            if (item.NewsRating < 3 && item.NewsRating >= 0)
                             {
                                 color = "post-category text-white bg-danger mb-3";
                                 caseName = "Berbat";
                             }
+                            puan = item.NewsRating * 10;
 
                             <tr>
                                 <td>@item.NewsID</td>
                                 <td><b><i>@item.NewsTitle</i></b></td>
                                 <td class="project_progress">
                                     <div class="progress progress-sm">
-                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="10" aria-volumemin="0" aria-volumemax="10" style="width: @item.NewsRating%">
+                                        <div class="progress-bar bg-green" role="progressbar" aria-volumenow="10" aria-volumemin="0" aria-volumemax="10" style="width: @puan%">
                                         </div>
                                     </div>
                                     <small>
-                                        @item.NewsRating / 100
+                                        @item.NewsRating / 10
                                     </small>
                                 </td>
                                 <td class="project-state">

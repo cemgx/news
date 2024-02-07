@@ -25,6 +25,8 @@ namespace EntityLayer.Concrete
 
         public bool CommentStatus { get; set; }
 
+        public int NewsRating { get; set; }
+
         public int NewsID { get; set; }
         public virtual News News { get; set; } 
     }

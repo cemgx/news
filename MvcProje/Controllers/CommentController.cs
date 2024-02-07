@@ -24,7 +24,9 @@ namespace MvcProje.Controllers
         [HttpPost]
         public PartialViewResult LeaveComment(Comment comment)
         {
+            comment.CommentStatus = true;
             _commentManager.CommentAdd(comment);
+            
             return PartialView();
         }
 

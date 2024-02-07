@@ -101,6 +101,10 @@
     <Compile Include="Migrations\202402061410495_mig_category_status.designer.cs">
       <DependentUpon>202402061410495_mig_category_status.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202402070631127_mig_news_rating.cs" />
+    <Compile Include="Migrations\202402070631127_mig_news_rating.designer.cs">
+      <DependentUpon>202402070631127_mig_news_rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202402061410495_mig_category_status.resx">
       <DependentUpon>202402061410495_mig_category_status.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202402070631127_mig_news_rating.resx">
+      <DependentUpon>202402070631127_mig_news_rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
