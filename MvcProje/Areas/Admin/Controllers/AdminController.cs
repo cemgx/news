@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MvcProje.Areas.Admin.Controllers
 {
@@ -310,6 +311,13 @@ namespace MvcProje.Areas.Admin.Controllers
         {
             _categoryManager.CategoryStatusTrueBusinessLayer(id);
             return RedirectToAction("AdminCategoryList");
+        }
+
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("AdminLogin", "Login");
         }
     }
 }
