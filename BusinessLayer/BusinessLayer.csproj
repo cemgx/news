@@ -69,7 +69,7 @@
     <Compile Include="ValidationRules\AboutValidator.cs" />
     <Compile Include="ValidationRules\AbstractValidator.cs" />
     <Compile Include="ValidationRules\AdminValidator.cs" />
-    <Compile Include="ValidationRules\AuthorValidation.cs" />
+    <Compile Include="ValidationRules\AuthorValidator.cs" />
     <Compile Include="ValidationRules\CategoryValidator.cs" />
     <Compile Include="ValidationRules\CommentValidator.cs" />
     <Compile Include="ValidationRules\ContactValidator.cs" />

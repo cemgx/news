@@ -22,39 +22,6 @@ namespace BusinessLayer.Concrete
             _authordal = authordal;
         }
 
-        //Adding new Author
-        public void AddAuthorBusinessLayer(Author author)
-        {
-            //Checking the validity of the values sent from the parameter
-            //if (author.AuthorName == "" || author.AuthorImage == "" || author.AuthorAbout == "" || author.AuthorTitle == "" || author.AuthorShortAbout == "" || author.AuthorMail == "")
-            //{
-            //    return -1;
-            //}
-            repoAuthor.Insert(author);
-        }
-
-        //Move the author to the edit page according to the id value
-        public Author FindAuthor(int id)
-        {
-            return repoAuthor.Find(x => x.AuthorID == id);
-        }
-
-        public void EditAuthor(Author author)
-        {
-            Author _author = repoAuthor.Find(x => x.AuthorID == author.AuthorID);
-            _author.AuthorName = author.AuthorName;
-            _author.AuthorImage = author.AuthorImage;
-            _author.AuthorAbout = author.AuthorAbout;
-            _author.AuthorInstagram = author.AuthorInstagram;
-            _author.AuthorX = author.AuthorX;
-            _author.AuthorTitle = author.AuthorTitle;
-            _author.AuthorShortAbout = author.AuthorShortAbout;
-            _author.AuthorMail = author.AuthorMail;
-            _author.AuthorPassword = author.AuthorPassword;
-            _author.AuthorPhoneNumber = author.AuthorPhoneNumber;
-            repoAuthor.Update(_author);
-        }
-
         public List<Author> GetList()
         {
             return _authordal.List();
@@ -62,7 +29,7 @@ namespace BusinessLayer.Concrete
 
         public void Add(Author p)
         {
-            throw new NotImplementedException();
+            _authordal.Insert(p);
         }
 
         public void Delete(Author p)
@@ -72,12 +39,12 @@ namespace BusinessLayer.Concrete
 
         public void Update(Author p)
         {
-            throw new NotImplementedException();
+            _authordal.Update(p);
         }
 
         public Author GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _authordal.GetById(id);
         }
     }
 }

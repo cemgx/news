@@ -44,7 +44,7 @@ namespace MvcProje.Areas.Admin.Controllers
 
         public ActionResult AuthorList()
         {
-            var authorList = _authorManager.GetAll();
+            var authorList = _authorManager.GetList();
             return View(authorList);
         }
 
@@ -56,21 +56,47 @@ namespace MvcProje.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddAuthor(Author author)
         {
-            _authorManager.AddAuthorBusinessLayer(author);
-            return RedirectToAction("AuthorList");
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(author);
+            if (results.IsValid)
+            {
+                _authorManager.Add(author);
+                return RedirectToAction("AuthorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
         [HttpGet]
         public ActionResult AuthorEdit(int id)
         {
-            Author author = _authorManager.FindAuthor(id);
+            Author author = _authorManager.GetByID(id);
             return View(author);
         }
         [HttpPost]
         public ActionResult AuthorEdit(Author author)
         {
-            _authorManager.EditAuthor(author);
-            return RedirectToAction("AuthorList");
+            AuthorValidator authorValidator = new AuthorValidator();
+            ValidationResult results = authorValidator.Validate(author);
+            if (results.IsValid)
+            {
+                _authorManager.Update(author);
+                return RedirectToAction("AuthorList");
+            }
+            else
+            {
+                foreach (var item in results.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
 
         public ActionResult AdminCategoryList()

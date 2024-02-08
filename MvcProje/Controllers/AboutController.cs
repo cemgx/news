@@ -27,21 +27,21 @@ namespace MvcProje.Controllers
         public PartialViewResult MeetTeam()
         {
             AuthorManager _authorManager = new AuthorManager(new EfAuthorDal());
-            var authorList = _authorManager.GetAll();
+            var authorList = _authorManager.GetList();
             return PartialView(authorList);
         }
 
-        [HttpGet]
-        public ActionResult UpdateAboutList()
-        {   
-            var aboutList = _aboutManager.GetAll();
-            return View(aboutList);
-        }
-        [HttpPost]
-        public ActionResult UpdateAbout(About about)
-        {
-            _aboutManager.UpdateAboutBusinessLayer(about);
-            return RedirectToAction("UpdateAboutList");
-        }
+        //[HttpGet]
+        //public ActionResult UpdateAboutList()
+        //{   
+        //    var aboutList = _aboutManager.GetAll();
+        //    return View(aboutList);
+        //}
+        //[HttpPost]
+        //public ActionResult UpdateAbout(About about)
+        //{
+        //    _aboutManager.UpdateAboutBusinessLayer(about);
+        //    return RedirectToAction("UpdateAboutList");
+        //}
     }
 }

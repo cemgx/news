@@ -31,16 +31,16 @@ namespace MvcProje.Controllers
             return View();
         }
 
-        public ActionResult SendBox()
-        {
-            var messageList = _contactManager.GetAll();
-            return View(messageList);
-        }
+        //public ActionResult SendBox()
+        //{
+        //    var messageList = _contactManager.GetAll();
+        //    return View(messageList);
+        //}
 
-        public ActionResult MessageDetails(int id)
-        {
-            Contact contact = _contactManager.GetContactDetails(id);
-            return View(contact);
-        }
+        //public ActionResult MessageDetails(int id)
+        //{
+        //    Contact contact = _contactManager.GetContactDetails(id);
+        //    return View(contact);
+        //}
     }
 }

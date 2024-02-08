@@ -19,10 +19,10 @@ namespace MvcProje.Controllers
             return PartialView(categoryvalues);
         }
 
-        public ActionResult AdminCategoryList() 
-        { 
-            var categoryList = _categoryManager.GetAll();
-            return View(categoryList);
-        }
+        //public ActionResult AdminCategoryList() 
+        //{ 
+        //    var categoryList = _categoryManager.GetAll();
+        //    return View(categoryList);
+        //}
     }
 }

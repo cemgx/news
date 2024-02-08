@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
 {
-    public class AuthorValidation : AbstractValidator<Author>
+    public class AuthorValidator : AbstractValidator<Author>
     {
-        public AuthorValidation()
+        public AuthorValidator()
         {
             RuleFor(x => x.AuthorName).NotEmpty().WithMessage("Yazar ismini boş bırakamazsınız.");
             RuleFor(x => x.AuthorName).MinimumLength(2).WithMessage("Yazar ismi en az 2 karakter olabilir.");
@@ -22,6 +22,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.AuthorTitle).MaximumLength(50).WithMessage("Yazarın mesleği en fazla 50 karakter olabilir.");
             RuleFor(x => x.AuthorShortAbout).NotEmpty().WithMessage("Yazarın hakim olduğu başlıklar boş bırakılamaz.");
             RuleFor(x => x.AuthorShortAbout).MaximumLength(100).WithMessage("Yazarın hakim olduğu başlıklar en fazla 100 karakter olabilir.");
+            RuleFor(x => x.AuthorMail).EmailAddress().WithMessage("Mailinizi kontrol ediniz.");
         }
     }
 }

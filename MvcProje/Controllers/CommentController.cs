@@ -40,28 +40,28 @@ namespace MvcProje.Controllers
             return RedirectToAction("GetCommentByNews", "News", new { id = newsId });
         }
 
-        public ActionResult AdminCommentListTrue()
-        {
-            var commentList = _commentManager.CommentByStatusTrue();
-            return View(commentList);
-        }
+        //public ActionResult AdminCommentListTrue()
+        //{
+        //    var commentList = _commentManager.CommentByStatusTrue();
+        //    return View(commentList);
+        //}
 
-        public ActionResult AdminCommentListFalse()
-        {
-            var commentList = _commentManager.CommentByStatusFalse();
-            return View(commentList);
-        }
+        //public ActionResult AdminCommentListFalse()
+        //{
+        //    var commentList = _commentManager.CommentByStatusFalse();
+        //    return View(commentList);
+        //}
 
-        public ActionResult ChangeCommentStatusToFalse(int id) 
-        {
-            _commentManager.ChangeCommentStatusToFalse(id);
-            return RedirectToAction("AdminCommentListTrue");
-        }
+        //public ActionResult ChangeCommentStatusToFalse(int id) 
+        //{
+        //    _commentManager.ChangeCommentStatusToFalse(id);
+        //    return RedirectToAction("AdminCommentListTrue");
+        //}
 
-        public ActionResult ChangeCommentStatusToTrue(int id)
-        {
-            _commentManager.ChangeCommentStatusToTrue(id);
-            return RedirectToAction("AdminCommentListFalse");
-        }
+        //public ActionResult ChangeCommentStatusToTrue(int id)
+        //{
+        //    _commentManager.ChangeCommentStatusToTrue(id);
+        //    return RedirectToAction("AdminCommentListFalse");
+        //}
     }
 }

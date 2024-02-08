@@ -7,9 +7,12 @@
 <form class="form-group" method="post">
     @Html.Label("Yazar Adı Soyadı")
     @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorName)
     <br />
     @Html.Label("Resim Yolu")
     @Html.TextBoxFor(x => x.AuthorImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorImage)
+
     <br />
     @Html.Label("Instagram")
     @Html.TextBoxFor(x => x.AuthorInstagram, new { @class = "form-control" })
@@ -19,12 +22,15 @@
     <br />
     @Html.Label("Yazarın Title'ı")
     @Html.TextBoxFor(x => x.AuthorTitle, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorTitle)
     <br />
     @Html.Label("Yazarın Genellikle Yazdığı Konular")
     @Html.TextBoxFor(x => x.AuthorShortAbout, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorShortAbout)
     <br />
     @Html.Label("Mail")
     @Html.TextBoxFor(x => x.AuthorMail, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorMail)
     <br />
     @Html.Label("Şifre")
     @Html.TextBoxFor(x => x.AuthorPassword, new { @class = "form-control" })
@@ -34,6 +40,7 @@
     <br />
     @Html.Label("Hakkında")
     @Html.TextAreaFor(x => x.AuthorAbout, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AuthorAbout)
     <br />
     <button class="btn btn-info">Kaydet</button>
 </form>
