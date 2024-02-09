@@ -12,16 +12,16 @@ namespace MvcProje.Controllers
     public class AboutController : Controller
     {
         // GET: About
-        AboutManager _aboutManager = new AboutManager();
+        AboutManager _aboutManager = new AboutManager(new EfAboutDal());
 
         public ActionResult Index()
         {
-            var aboutContent = _aboutManager.GetAll();
+            var aboutContent = _aboutManager.GetList();
             return View(aboutContent);
         }
         public PartialViewResult Footer()
         {
-            var aboutcontentlist = _aboutManager.GetAll();
+            var aboutcontentlist = _aboutManager.GetList();
             return PartialView(aboutcontentlist);
         }
         public PartialViewResult MeetTeam()

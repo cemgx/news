@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace MvcProje.Controllers
     public class ContactController : Controller
     {
         // GET: Contact
-        ContactManager _contactManager = new ContactManager();
+        ContactManager _contactManager = new ContactManager(new EfContactDal());
         
         public ActionResult Index()
         {

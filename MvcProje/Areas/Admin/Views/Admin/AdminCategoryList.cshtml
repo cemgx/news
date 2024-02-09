@@ -70,21 +70,16 @@
                                             </li>
                                         </ul>
                                     }
-                                    &nbsp; &nbsp;
+
                                     @if (item.NewsList.Any())
                                     {
                                         @item.NewsList.OrderByDescending(news => news.NewsDate).First().NewsTitle
                                     }
                                     else
                                     {
-                                        // Eğer kategoride hiç haber yoksa burada bir mesaj yazdırabilirsiniz.
-                                        <p>No news available</p>
+                                        <p>Haber yok.</p>
                                     }
                                 </td>
-
-
-
-
 
                                 <td class="project-state">
                                     <span class="@color">@item.Category.CategoryStatus</span>
