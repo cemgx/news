@@ -63,6 +63,8 @@
     <Compile Include="Concrete\Repository.cs" />
     <Compile Include="EntityFramework\EfAuthorDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
+    <Compile Include="EntityFramework\EfCommentDal.cs" />
+    <Compile Include="EntityFramework\EfNewsDal.cs" />
     <Compile Include="Migrations\202312081510299_simpleFix.cs" />
     <Compile Include="Migrations\202312081510299_simpleFix.designer.cs">
       <DependentUpon>202312081510299_simpleFix.cs</DependentUpon>

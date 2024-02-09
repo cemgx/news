@@ -3,6 +3,7 @@ using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLayer.Concrete
 {
@@ -19,7 +20,7 @@ namespace BusinessLayer.Concrete
 
         public List<Category> GetAll()
         {
-            return repoCategory.List();
+            return _categoryDal.List();
         }
 
         public void CategoryStatusFalseBusinessLayer(int id)

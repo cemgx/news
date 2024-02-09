@@ -13,7 +13,7 @@ namespace MvcProje.Controllers
     public class AuthorController : Controller
     {
         // GET: Author
-        NewsManager _newsManager = new NewsManager();
+        NewsManager _newsManager = new NewsManager(new EfNewsDal());
         AuthorManager _authorManager = new AuthorManager(new EfAuthorDal());
 
         public PartialViewResult AuthorAbout(int id)
@@ -24,7 +24,7 @@ namespace MvcProje.Controllers
 
         public PartialViewResult AuthorPopularNews(int id)
         {
-            var newsAuthorID = _newsManager.GetAll().Where(x => x.NewsID == id).Select(y => y.AuthorID).FirstOrDefault();
+            var newsAuthorID = _newsManager.GetList().Where(x => x.NewsID == id).Select(y => y.AuthorID).FirstOrDefault();
             var authorNews = _newsManager.GetNewsByAuthor(newsAuthorID);
             return PartialView(authorNews);
         }

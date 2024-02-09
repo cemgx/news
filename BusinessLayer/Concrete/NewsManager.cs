@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,13 +10,15 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class NewsManager
+    public class NewsManager : INewsService
     {
+        INewsDal _newsDal;
+
         Repository<News> reponews = new Repository<News>();
 
-        public List<News> GetAll()
+        public NewsManager(INewsDal newsDal)
         {
-            return reponews.List();
+            _newsDal = newsDal;
         }
 
         public List<News> GetNewsByID(int id) 
@@ -32,36 +36,29 @@ namespace BusinessLayer.Concrete
             return reponews.List(x => x.CategoryID == id);
         }
 
-        public void NewsAddBusinessLayer(News news)
+        public List<News> GetList()
         {
-            //if(news.NewsTitle == "" || news.NewsImage == "" || news.NewsTitle.Length <= 5 || news.NewsContent.Length <= 200)
-            //{
-            //    return -1;
-            //}
-            reponews.Insert(news);
+            return _newsDal.List();
         }
 
-        public void DeleteNewsBusinessLayer(int p)
+        public void Add(News p)
         {
-            News news = reponews.Find(x => x.NewsID == p);
-            reponews.Delete(news);
+            _newsDal.Insert(p);
         }
 
-        public News FindNews(int id)
+        public void Delete(News p)
         {
-            return reponews.Find(x => x.NewsID == id);
+            _newsDal.Delete(p);
         }
 
-        public void UpdateNews(News news)
+        public void Update(News p)
         {
-            News n = reponews.Find(x => x.NewsID == news.NewsID);
-            n.NewsTitle = news.NewsTitle;
-            n.NewsContent = news.NewsContent;
-            n.NewsDate = news.NewsDate;
-            n.NewsImage = news.NewsImage;
-            n.CategoryID = news.CategoryID;
-            n.AuthorID = news.AuthorID;
-            reponews.Update(n);
+            _newsDal.Update(p);
+        }
+
+        public News GetByID(int id)
+        {
+            return _newsDal.GetById(id);
         }
     }
 }

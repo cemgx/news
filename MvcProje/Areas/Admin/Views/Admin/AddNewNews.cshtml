@@ -7,6 +7,7 @@
 <form class="form-group" method="post">
     @Html.Label("Haber Başlığı")
     @Html.TextBoxFor(x => x.NewsTitle, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.NewsTitle)
     <br />
     @Html.Label("Kategori")
     @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
@@ -22,6 +23,7 @@
     <br />
     @Html.Label("İçerik")
     @Html.TextAreaFor(x => x.NewsContent, 15, 20, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.NewsContent)
     <br />
     <button class="btn btn-info">Kaydet</button>
 </form>

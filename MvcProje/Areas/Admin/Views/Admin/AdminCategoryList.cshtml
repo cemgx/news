@@ -1,4 +1,5 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Category>
+﻿
+@model IEnumerable<MvcProje.Models.CategoryNewsViewModel>
 
 @{
     ViewBag.Title = "AdminCategoryList";
@@ -33,10 +34,10 @@
                             <th style="width: 13%">
                                 Kategori Adı
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 20%">
                                 Son Haber
                             </th>
-                            <th style="width: 15%" class="text-center">
+                            <th style="width: 10%" class="text-center">
                                 Aktiflik
                             </th>
                             <th style="width: 15%">
@@ -46,51 +47,65 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            if (item.CategoryStatus == true)
+                            if (item.Category.CategoryStatus == true)
                             {
                                 color = "badge badge-success";
                             }
-                            if (item.CategoryStatus == false)
+                            if (item.Category.CategoryStatus == false)
                             {
                                 color = "badge badge-warning";
                             }
 
                             <tr>
-                                <td>@item.CategoryID</td>
-                                <td><b><i>@item.CategoryName</i></b></td>
+                                <td>@item.Category.CategoryID</td>
+                                <td><b><i>@item.Category.CategoryName</i></b></td>
+
                                 <td>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4/dist/img/avatar.png">
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4/dist/img/avatar2.png">
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <img alt="Avatar" class="table-avatar" src="/AdminLTE-3.0.4/dist/img/avatar3.png">
-                                        </li>
-                                    </ul>
+                                    @if (item.NewsList.Any())
+                                    {
+                                        var authorImage = item.NewsList.OrderByDescending(news => news.NewsDate).First().Author.AuthorImage;
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="@authorImage">
+                                            </li>
+                                        </ul>
+                                    }
+                                    &nbsp; &nbsp;
+                                    @if (item.NewsList.Any())
+                                    {
+                                        @item.NewsList.OrderByDescending(news => news.NewsDate).First().NewsTitle
+                                    }
+                                    else
+                                    {
+                                        // Eğer kategoride hiç haber yoksa burada bir mesaj yazdırabilirsiniz.
+                                        <p>No news available</p>
+                                    }
                                 </td>
+
+
+
+
+
                                 <td class="project-state">
-                                    <span class="@color">@item.CategoryStatus</span>
+                                    <span class="@color">@item.Category.CategoryStatus</span>
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary" href="/News/NewsByCategory/@item.CategoryID">
+                                    <a class="btn btn-primary" href="/News/NewsByCategory/@item.Category.CategoryID">
                                         <i class="fas fa-eye">
                                         </i>
                                         Yazılar
                                     </a>
-                                    <a class="btn btn-info" href="/Admin/Admin/CategoryEdit/@item.CategoryID">
+                                    <a class="btn btn-info" href="/Admin/Admin/CategoryEdit/@item.Category.CategoryID">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Düzenle
                                     </a>
-                                    <a class="btn btn-danger" href="/Admin/Admin/CategoryDelete/@item.CategoryID">
+                                    <a class="btn btn-danger" href="/Admin/Admin/CategoryDelete/@item.Category.CategoryID">
                                         <i class="fas fa-trash">
                                         </i>
                                         Pasif Yap
                                     </a>
-                                    <a class="btn btn-outline-success" href="/Admin/Admin/CategoryStatusTrue/@item.CategoryID">
+                                    <a class="btn btn-outline-success" href="/Admin/Admin/CategoryStatusTrue/@item.Category.CategoryID">
                                         <i class="fas fa-vote-yea">
                                         </i>
                                         Aktif Yap

@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace MvcProje.Controllers
     {
         // GET: User
         UserProfileManager _userProfileManager = new UserProfileManager();
-        NewsManager _newsManager = new NewsManager();
+        NewsManager _newsManager = new NewsManager(new EfNewsDal());
 
         public ActionResult Index()
         {
@@ -47,7 +48,7 @@ namespace MvcProje.Controllers
         [HttpGet]
         public ActionResult UpdateNews(int id)
         {
-            News news = _newsManager.FindNews(id);
+            News news = _newsManager.GetByID(id);
             Context _context = new Context();
             List<SelectListItem> values = (from x in _context.Categories.ToList()
                                            select new SelectListItem
@@ -69,7 +70,7 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult UpdateNews(News news)
         {
-            _newsManager.UpdateNews(news);
+            _newsManager.Update(news);
             return RedirectToAction("NewsList");
         }
 
@@ -97,7 +98,7 @@ namespace MvcProje.Controllers
         [HttpPost]
         public ActionResult AddNewNews(News news)
         {
-            _newsManager.NewsAddBusinessLayer(news);
+            _newsManager.Add(news);
             return RedirectToAction("NewsList");
         }
 

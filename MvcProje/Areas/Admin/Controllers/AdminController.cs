@@ -6,6 +6,7 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using MvcProje.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -19,13 +20,13 @@ namespace MvcProje.Areas.Admin.Controllers
         AboutManager _aboutManager = new AboutManager();
         AuthorManager _authorManager = new AuthorManager(new EfAuthorDal());
         CategoryManager _categoryManager = new CategoryManager(new EfCategoryDal());
-        CommentManager _commentManager = new CommentManager();
+        CommentManager _commentManager = new CommentManager(new EfCommentDal());
         ContactManager _contactManager = new ContactManager();
-        NewsManager _newsManager = new NewsManager();
+        NewsManager _newsManager = new NewsManager(new EfNewsDal());
 
         public ActionResult AdminNewsList()
         {
-            var newslist = _newsManager.GetAll();
+            var newslist = _newsManager.GetList();
             return View(newslist);
         }
 
@@ -101,9 +102,26 @@ namespace MvcProje.Areas.Admin.Controllers
 
         public ActionResult AdminCategoryList()
         {
-            var categoryList = _categoryManager.GetAll();
-            return View(categoryList);
+            var categoryList = _categoryManager.GetAll(); // Kategori listesini al
+
+            // Kategori ve ilişkili haber verilerini ViewModel'e doldur
+            List<CategoryNewsViewModel> categoryNewsList = new List<CategoryNewsViewModel>();
+            foreach (var category in categoryList)
+            {
+                var newsList = _newsManager.GetNewsByCategory(category.CategoryID); // Kategoriye ait haber listesini al
+
+                CategoryNewsViewModel categoryNewsViewModel = new CategoryNewsViewModel
+                {
+                    Category = category,
+                    NewsList = newsList
+                };
+
+                categoryNewsList.Add(categoryNewsViewModel);
+            }
+
+            return View(categoryNewsList); // ViewModel listesini View'e gönder
         }
+
 
         public ActionResult Chart()
         {
@@ -231,31 +249,27 @@ namespace MvcProje.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult AddNewNews(News news)
         {
-            _newsManager.NewsAddBusinessLayer(news);
+            _newsManager.Add(news);
             return RedirectToAction("AdminNewsList");
         }
 
         public ActionResult AdminNewsList2()
         {
-            var newslist = _newsManager.GetAll();
+            var newslist = _newsManager.GetList();
             return View(newslist);
-        }
-
-        public ActionResult NewsDetails()
-        {
-            return RedirectToAction("NewsDetails", "News");
         }
 
         public ActionResult DeleteNews(int id)
         {
-            _newsManager.DeleteNewsBusinessLayer(id);
-            return RedirectToAction("AdminNewsList");
+            News news = _newsManager.GetByID(id);
+            _newsManager.Delete(news);
+            return RedirectToAction("AdminNewsList2");
         }
 
         [HttpGet]
         public ActionResult UpdateNews(int id)
         {
-            News news = _newsManager.FindNews(id);
+            News news = _newsManager.GetByID(id);
             Context _context = new Context();
             List<SelectListItem> values = (from x in _context.Categories.ToList()
                                            select new SelectListItem
@@ -277,14 +291,13 @@ namespace MvcProje.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult UpdateNews(News news)
         {
-            _newsManager.UpdateNews(news);
-            return RedirectToAction("AdminNewsList");
+            _newsManager.Update(news);
+            return RedirectToAction("AdminNewsList2");
         }
 
         public ActionResult GetCommentByNews(int id)
         {
-            CommentManager commentManager = new CommentManager();
-            var commentList = commentManager.CommentByNews(id);
+            var commentList = _commentManager.CommentByNews(id);
             return View(commentList);
         }
 
@@ -300,6 +313,7 @@ namespace MvcProje.Areas.Admin.Controllers
         public ActionResult AuthorNewsList(int id)
         {
             var news = _newsManager.GetNewsByAuthor(id);
+
             return View(news);
         }
 
@@ -365,6 +379,20 @@ namespace MvcProje.Areas.Admin.Controllers
             _categoryManager.CategoryStatusTrueBusinessLayer(id);
             return RedirectToAction("AdminCategoryList");
         }
+
+        //public PartialViewResult LastNewsWriter()
+        //{
+        //    var allNews = _newsManager.GetList();
+        //    for (var a = 1; a <= allNews.FirstOrDefault().Author.AuthorName.Count(); a++)
+        //    {
+        //        var lastAuthorImage1 = allNews.OrderByDescending(z => z.NewsID).Where(x => x.CategoryID == a).Select(y => y.Author.AuthorImage).FirstOrDefault();
+        //        var lastAuthorNewsName = _newsManager.GetList().OrderByDescending(z => z.NewsID).Where(x => x.CategoryID == a).Select(y => y.NewsTitle).FirstOrDefault();
+
+        //        ViewBag.lastAuthorImage1 = lastAuthorImage1;
+        //        ViewBag.lastAuthorNewsName = lastAuthorNewsName;
+        //    }
+        //    return PartialView();
+        //}
 
         public ActionResult LogOut()
         {
