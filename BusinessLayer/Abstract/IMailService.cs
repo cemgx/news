@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface INewsService : IRepositoryService<News>
+    public interface IMailService : IRepositoryService<SubscribeMail>
     {
-        List<News> GetNewsByID(int id);
-
-        List<News> GetNewsByAuthor(int id);
     }
 }

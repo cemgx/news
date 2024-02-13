@@ -54,6 +54,7 @@
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\IAuthorDal.cs" />
+    <Compile Include="Abstract\IMailDal.cs" />
     <Compile Include="Abstract\INewsDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\ICommentDal.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfCommentDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
+    <Compile Include="EntityFramework\EfMailDal.cs" />
     <Compile Include="EntityFramework\EfNewsDal.cs" />
     <Compile Include="Migrations\202312081510299_simpleFix.cs" />
     <Compile Include="Migrations\202312081510299_simpleFix.designer.cs">

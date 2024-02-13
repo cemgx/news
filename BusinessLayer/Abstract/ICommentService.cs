@@ -9,5 +9,8 @@ namespace BusinessLayer.Abstract
 {
     public interface ICommentService : IRepositoryService<Comment>
     {
+        List<Comment> CommentByNews(int id);
+        List<Comment> CommentByStatusTrue();
+        List<Comment> CommentByStatusFalse();
     }
 }

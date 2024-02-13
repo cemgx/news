@@ -6,7 +6,6 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using MvcProje.Models;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -102,24 +101,22 @@ namespace MvcProje.Areas.Admin.Controllers
 
         public ActionResult AdminCategoryList()
         {
-            var categoryList = _categoryManager.GetAll();
+            var categoryList = _categoryManager.GetList();
 
-            
             List<CategoryNewsViewModel> categoryNewsList = new List<CategoryNewsViewModel>();
             foreach (var category in categoryList)
             {
-                var newsList = _newsManager.GetNewsByCategory(category.CategoryID); 
+                var newsList = _newsManager.GetNewsByCategory(category.CategoryID);
 
                 CategoryNewsViewModel categoryNewsViewModel = new CategoryNewsViewModel
                 {
                     Category = category,
                     NewsList = newsList
                 };
-
                 categoryNewsList.Add(categoryNewsViewModel);
             }
 
-            return View(categoryNewsList); 
+            return View(categoryNewsList);
         }
 
 
@@ -216,12 +213,20 @@ namespace MvcProje.Areas.Admin.Controllers
         public ActionResult SendBox()
         {
             var messageList = _contactManager.GetList();
+
+            var x = _contactManager.GetList().Count();
+            ViewBag.x = x;
+
             return View(messageList);
         }
 
         public ActionResult MessageDetails(int id)
         {
             Contact contact = _contactManager.GetByID(id);
+
+            var x = _contactManager.GetList().Count();
+            ViewBag.x = x;
+
             return View(contact);
         }
 

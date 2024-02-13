@@ -14,25 +14,14 @@ namespace BusinessLayer.Concrete
     {
         IContact _contactDal;
 
-        Repository<Contact> repoContact = new Repository<Contact>();
-
         public ContactManager(IContact contactDal)
         {
             _contactDal = contactDal;
         }
 
-        public void BLContactAdd(Contact c)
-        {
-            //if(c.Mail == "" || c.Message == "" || c.Name == "" || c.Subject == "" || c.Surname == "" || c.Mail.Length <= 8 || c.Subject.Length <= 2) 
-            //{
-            //    return -1;
-            //}
-            repoContact.Insert(c);
-        }
-
         public void Add(Contact p)
         {
-            throw new NotImplementedException();
+            _contactDal.Insert(p);
         }
 
         public void Delete(Contact p)

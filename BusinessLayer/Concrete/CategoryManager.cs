@@ -16,11 +16,6 @@ namespace BusinessLayer.Concrete
             _categoryDal = categoryDal;
         }
 
-        public List<Category> GetAll()
-        {
-            return _categoryDal.List();
-        }
-
         public void CategoryStatusFalseBusinessLayer(int id)
         {
             Category _category = _categoryDal.Find(x => x.CategoryID == id);

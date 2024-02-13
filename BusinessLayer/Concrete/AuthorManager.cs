@@ -15,8 +15,6 @@ namespace BusinessLayer.Concrete
     {
         IAuthorDal _authordal;
 
-        Repository<Author> repoAuthor = new Repository<Author>();
-
         public AuthorManager(IAuthorDal authordal)
         {
             _authordal = authordal;

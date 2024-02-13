@@ -8,7 +8,7 @@ namespace BusinessLayer.ValidationRules
         public ContactValidator()
         {
             RuleFor(x => x.Name).NotEmpty().WithMessage("Adınızı boş bırakamazsınız.")
-                .MinimumLength(3).WithMessage("Adınız en az 3 karakter olabilir.")
+                .MinimumLength(2).WithMessage("Adınız en az 2 karakter olabilir.")
                 .MaximumLength(50).WithMessage("Adınız en fazla 50 karakter olabilir.");
             RuleFor(x => x.Surname).NotEmpty().WithMessage("Soyadınızı boş bırakamazsınız.")
                 .MinimumLength(2).WithMessage("Soyadınız en az 2 karakter olabilir.")

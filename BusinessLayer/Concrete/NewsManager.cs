@@ -14,8 +14,6 @@ namespace BusinessLayer.Concrete
     {
         INewsDal _newsDal;
 
-        Repository<News> reponews = new Repository<News>();
-
         public NewsManager(INewsDal newsDal)
         {
             _newsDal = newsDal;
@@ -23,17 +21,17 @@ namespace BusinessLayer.Concrete
 
         public List<News> GetNewsByID(int id) 
         { 
-            return reponews.List(x => x.NewsID == id);
+            return _newsDal.List(x => x.NewsID == id);
         }
 
         public List<News> GetNewsByAuthor(int id)
         {
-            return reponews.List(x => x.AuthorID == id);
+            return _newsDal.List(x => x.AuthorID == id);
         }
 
         public List<News> GetNewsByCategory(int id)
         {
-            return reponews.List(x => x.CategoryID == id);
+            return _newsDal.List(x => x.CategoryID == id);
         }
 
         public List<News> GetList()

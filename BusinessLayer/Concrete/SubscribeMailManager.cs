@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,17 +10,38 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
-    public class SubscribeMailManager
+    public class SubscribeMailManager : IMailService
     {
-        Repository<SubscribeMail> reposubscribemail = new Repository<SubscribeMail>();
+        IMailDal _mailDal;
 
-        public void BLAdd(SubscribeMail p)
+        public SubscribeMailManager(IMailDal mailDal)
         {
-            //if(p.Mail.Length <= 10 || p.Mail.Length >= 50)
-            //{
-            //    return -1;
-            //}
-            reposubscribemail.Insert(p);
+            _mailDal = mailDal;
+        }
+
+        public void Add(SubscribeMail p)
+        {
+            _mailDal.Insert(p);
+        }
+
+        public void Delete(SubscribeMail p)
+        {
+            throw new NotImplementedException();
+        }
+
+        public SubscribeMail GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<SubscribeMail> GetList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(SubscribeMail p)
+        {
+            throw new NotImplementedException();
         }
     }
 }
